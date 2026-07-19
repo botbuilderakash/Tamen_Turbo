@@ -1,0 +1,13 @@
+{
+  "botName": "Quantum Bot V2",
+  "prefix": "!",
+  "adminUIDs": [
+    "100076543210987",
+    "100012345678901"
+  ],
+  "botOwners": [
+    "আপনার নাম বা আইডি"
+  ],
+  "proxy": "",
+  "debug": false
+}
