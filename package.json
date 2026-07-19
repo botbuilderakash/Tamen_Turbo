@@ -1,12 +1,17 @@
 {
-  "name": "my-messenger-bot",
-  "version": "1.0.0",
-  "description": "My custom messenger bot",
+  "name": "custom-goat-style-bot",
+  "version": "2.0.0",
+  "description": "A highly optimized modular Facebook Messenger Bot framework inspired by GoatBot",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
-    "facebook-chat-api": "^1.8.0"
+    "fca-unofficial": "^0.0.0-security",
+    "fs-extra": "^11.2.0",
+    "axios": "^1.7.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
