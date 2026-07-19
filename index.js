@@ -1,7 +1,14 @@
 const login = require("facebook-chat-api");
-const fs = require("fs");
 
-const credentials = { appState: JSON.parse(fs.readFileSync('appstate.json', 'utf8')) };
+// সরাসরি ফাইল থেকে না পড়ে, এটি হোস্টিং সার্ভারের সিকিউর এনভায়রনমেন্ট থেকে অ্যাপস্টেট নিবে
+const appStateString = process.env.APPSTATE;
+
+if (!appStateString) {
+    console.error("Error: APPSTATE environment variable is missing!");
+    process.exit(1);
+}
+
+const credentials = { appState: JSON.parse(appStateString) };
 
 const BOT_CONFIG = {
     prefix: "/", 
@@ -24,8 +31,6 @@ login(credentials, (err, api) => {
                 const command = args.shift().toLowerCase();
 
                 // === COMMANDS ===
-
-                // 1. Help Command
                 if (command === "help") {
                     const helpText = `🤖 [ ${BOT_CONFIG.botName} - System Menu ]\n\n` +
                                      `📌 ${BOT_CONFIG.prefix}ping - Check bot status\n` +
@@ -33,12 +38,10 @@ login(credentials, (err, api) => {
                     api.sendMessage(helpText, message.threadID);
                 }
 
-                // 2. Ping Command
                 else if (command === "ping") {
                     api.sendMessage("Ore wa online active! Daijoubu desu yo! ⚡", message.threadID);
                 }
 
-                // 3. Say Command
                 else if (command === "say") {
                     const speech = args.join(" ");
                     if (!speech) {
@@ -48,7 +51,6 @@ login(credentials, (err, api) => {
                     }
                 }
 
-                // Unknown Command
                 else {
                     api.sendMessage(`❌ Gomen, ore wa don't know this command. Type ${BOT_CONFIG.prefix}help to see the menu.`, message.threadID);
                 }
