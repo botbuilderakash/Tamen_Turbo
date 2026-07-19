@@ -1,0 +1,12 @@
+{
+  "name": "my-messenger-bot",
+  "version": "1.0.0",
+  "description": "My custom messenger bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "facebook-chat-api": "^1.8.0"
+  }
+}
